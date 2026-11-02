@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('slider', function (Blueprint $table) {
+            $table->id();
+            $table->string('foto'); 
+            $table->string('judul')->nullable(); // Teks di atas gambar
+            $table->text('deskripsi')->nullable();
+            $table->boolean('status_aktif')->default(true);
+            $table->integer('urutan_tampil')->default(0);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('slider');
+    }
+};
